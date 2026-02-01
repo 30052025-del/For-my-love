@@ -103,18 +103,35 @@
       noBtn.style.top = y + "px";
     });
 
-    // YES button: hearts + open Google Form
+    // YES button: hearts + message + open Google Form prefilled with YES
     yesBtn.addEventListener("click", () => {
       createHearts(50);
-      window.open('https://docs.google.com/forms/u/0/?pli=1&tgif=d'); // REPLACE with your shareable form link
+
+      // Show "She said YES" message
+      const msg = document.createElement("h1");
+      msg.textContent = "She said YES ❤️";
+      msg.style.position = "absolute";
+      msg.style.top = "40%";
+      msg.style.left = "50%";
+      msg.style.transform = "translate(-50%, -50%)";
+      msg.style.fontSize = "3rem";
+      msg.style.color = "#fff";
+      msg.style.zIndex = "10";
+      document.body.appendChild(msg);
+
+      // Wait 2 seconds to enjoy the animation, then open form
+      setTimeout(() => {
+        document.body.removeChild(msg);
+        window.open('YOUR_GOOGLE_FORM_PREFILLED_LINK'); // Replace with your prefilled link
+      }, 2000);
     });
 
-    // NO button: also opens Google Form
+    // NO button opens Google Form normally if clicked
     noBtn.addEventListener("click", () => {
-      window.open('https://docs.google.com/forms/u/0/?pli=1&tgif=d'); // REPLACE with your shareable form link
+      window.open('YOUR_GOOGLE_FORM_LINK'); // Replace with normal link
     });
 
-    // Create floating hearts
+    // Function to create floating hearts
     function createHearts(count) {
       for (let i = 0; i < count; i++) {
         let heart = document.createElement("div");
@@ -129,15 +146,12 @@
     }
 
     // Continuous background hearts
-    setInterval(() => {
-      createHearts(3);
-    }, 500);
+    setInterval(() => { createHearts(3); }, 500);
 
-    // Fix browser autoplay restrictions
+    // Browser autoplay fix
     document.body.addEventListener("click", () => {
       bgMusic.play();
     }, { once: true });
-
   </script>
 
 </body>
