@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shelmith ❤️ Will You Be My Valentine?</title>
+</head>
+<body>
+  <h1>Dear Shelmith 💕</h1>
+  <img src="us.jpg" alt="Us together" style="width:300px; border-radius:20px;">
+  <p>Will you be my Valentine? 🌹</p>
+
+  <!-- Background music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="njerae.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const bgMusic = document.getElementById("bgMusic");
+    // Start music on first click if autoplay blocked
+    document.body.addEventListener("click", () => {
+      bgMusic.play();
+    }, { once: true });
+  </script>
+</body>
+</html>
